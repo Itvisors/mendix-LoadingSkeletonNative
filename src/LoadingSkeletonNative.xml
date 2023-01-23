@@ -8,9 +8,54 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="yourName" type="string" required="false">
-                <caption>Name</caption>
-                <description>Enter your name</description>
+            <property key="dataLoaded" type="expression" required="true">
+                <caption>Data loaded</caption>
+                <description>Set to true when the data is loaded</description>
+                <returnType type="Boolean" />
+            </property>
+            <property key="contentToLoad" type="widgets" required="false">
+                <caption>Content to load.</caption>
+                <description>Widgets to place inside.</description>
+            </property>
+            <property key="skeletonShapes" type="object" isList="true" required="false">
+                <caption>Shapes</caption>
+                <description>The skeleton shapes to be shown while the content is loading</description>
+                <properties>
+                    <propertyGroup caption="Shapes">
+                        <property key="skeletonShape" type="enumeration" required="true" defaultValue="rectangle">
+                            <caption>Shape</caption>
+                            <description></description>
+                            <enumerationValues>
+                                <enumerationValue key="rectangle">Rectangle</enumerationValue>
+                                <enumerationValue key="circle">Circle</enumerationValue>
+                            </enumerationValues>
+                        </property>
+                        <property key="shapeWidth" type="integer" required="true" defaultValue="100">
+                            <caption>Width</caption>
+                            <description>Width of the shape</description>
+                        </property>
+                        <property key="shapeWidthPixels" type="boolean" required="true" defaultValue="false">
+                            <caption>Width in px</caption>
+                            <description>Set to true if the width is specified in px, false for %.</description>
+                        </property>
+                        <property key="shapeHeight" type="integer" required="true" defaultValue="38">
+                            <caption>Height</caption>
+                            <description>Height of the shape</description>
+                        </property>
+                        <property key="shapeHeightPixels" type="boolean" required="true" defaultValue="true">
+                            <caption>Height in px</caption>
+                            <description>Set to true if the height is specified in px, false for %.</description>
+                        </property>
+                         <property key="shapeClass" type="string" required="false">
+                            <caption>Class</caption>
+                            <description></description>
+                        </property>
+                    </propertyGroup>
+                </properties>
+            </property>
+            <property key="delay" type="integer" required="true" defaultValue="100">
+                <caption>Delay(ms)</caption>
+                <description>The widget does not know when it starts showing. Therefore, if the other content on your page also takes some time to load, the skeleton is triggered too late and will not be shown. A small delay can be set to make sure the other content is loaded. Another option can be to put the other content also in a skeleton widget</description>
             </property>
         </propertyGroup>
     </properties>
