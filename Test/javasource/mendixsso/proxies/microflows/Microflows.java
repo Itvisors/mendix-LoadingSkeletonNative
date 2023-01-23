@@ -73,6 +73,12 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		return (java.lang.String) Core.microflowCall("MendixSSO.GetEnvironmentUUID").withParams(params).execute(context);
 	}
+	public static java.lang.String getLegacyOpenIDForSSOUser(IContext context, system.proxies.User _user)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("User", _user == null ? null : _user.getMendixObject());
+		return (java.lang.String) Core.microflowCall("MendixSSO.GetLegacyOpenIDForSSOUser").withParams(params).execute(context);
+	}
 	public static java.lang.String getOpenIDConnectProvider(IContext context)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
@@ -82,6 +88,11 @@ public class Microflows
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		return (java.lang.String) Core.microflowCall("MendixSSO.GetOpenIdConnectScopes").withParams(params).execute(context);
+	}
+	public static java.lang.String getOpenIDPrefix(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		return (java.lang.String) Core.microflowCall("MendixSSO.GetOpenIDPrefix").withParams(params).execute(context);
 	}
 	public static java.lang.String getRolesLocation(IContext context)
 	{
@@ -103,6 +114,12 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		IMendixObject result = (IMendixObject)Core.microflowCall("MendixSSO.GetUserProfileFromUserInfoEndpoint").withParams(params).execute(context);
 		return result == null ? null : mendixsso.proxies.UserProfile.initialize(context, result);
+	}
+	public static java.lang.String getUUIDForSSOUser(IContext context, system.proxies.User _user)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("User", _user == null ? null : _user.getMendixObject());
+		return (java.lang.String) Core.microflowCall("MendixSSO.GetUUIDForSSOUser").withParams(params).execute(context);
 	}
 	public static boolean mendixSSO_AfterStartup(IContext context)
 	{
@@ -176,12 +193,43 @@ public class Microflows
 		IMendixObject result = (IMendixObject)Core.microflowCall("MendixSSO.SUB_GetAccessTokenAndEnsureNotExpiresSoon").withParams(params).execute(context);
 		return result == null ? null : mendixsso.proxies.DecryptedToken.initialize(context, result);
 	}
+	public static mendixsso.proxies.DecryptedToken sUB_GetCurrentAccessToken(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		IMendixObject result = (IMendixObject)Core.microflowCall("MendixSSO.SUB_GetCurrentAccessToken").withParams(params).execute(context);
+		return result == null ? null : mendixsso.proxies.DecryptedToken.initialize(context, result);
+	}
+	public static mendixsso.proxies.DecryptedToken sUB_GetCurrentIdToken(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		IMendixObject result = (IMendixObject)Core.microflowCall("MendixSSO.SUB_GetCurrentIdToken").withParams(params).execute(context);
+		return result == null ? null : mendixsso.proxies.DecryptedToken.initialize(context, result);
+	}
+	public static mendixsso.proxies.MendixSSOUser sUB_GetCurrentMendixSSOUser(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		IMendixObject result = (IMendixObject)Core.microflowCall("MendixSSO.SUB_GetCurrentMendixSSOUser").withParams(params).execute(context);
+		return result == null ? null : mendixsso.proxies.MendixSSOUser.initialize(context, result);
+	}
+	public static mendixsso.proxies.DecryptedToken sUB_GetCurrentRefreshToken(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		IMendixObject result = (IMendixObject)Core.microflowCall("MendixSSO.SUB_GetCurrentRefreshToken").withParams(params).execute(context);
+		return result == null ? null : mendixsso.proxies.DecryptedToken.initialize(context, result);
+	}
 	public static mendixsso.proxies.DecryptedToken sUB_GetDecryptedTokenByTypeForCurrentSession(IContext context, mendixsso.proxies.TokenType _tokenType)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("TokenType", _tokenType == null ? null : _tokenType.name());
 		IMendixObject result = (IMendixObject)Core.microflowCall("MendixSSO.SUB_GetDecryptedTokenByTypeForCurrentSession").withParams(params).execute(context);
 		return result == null ? null : mendixsso.proxies.DecryptedToken.initialize(context, result);
+	}
+	public static mendixsso.proxies.ForeignIdentity sUB_GetForeignIdentity(IContext context, system.proxies.User _user)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("User", _user == null ? null : _user.getMendixObject());
+		IMendixObject result = (IMendixObject)Core.microflowCall("MendixSSO.SUB_GetForeignIdentity").withParams(params).execute(context);
+		return result == null ? null : mendixsso.proxies.ForeignIdentity.initialize(context, result);
 	}
 	public static java.lang.String sUB_GetHttpHeaderValue(IContext context, java.lang.String _headerName, system.proxies.HttpMessage _httpMessage)
 	{
@@ -202,6 +250,12 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("AccessToken", _accessToken);
 		return (java.lang.String) Core.microflowCall("MendixSSO.SUB_GetUserInfoFromIdentityProvider").withParams(params).execute(context);
+	}
+	public static java.lang.String sUB_GetUUIDFromOpenId(IContext context, java.lang.String _openId)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("OpenId", _openId);
+		return (java.lang.String) Core.microflowCall("MendixSSO.SUB_GetUUIDFromOpenId").withParams(params).execute(context);
 	}
 	public static mendixsso.proxies.Response sUB_RefreshTokens(IContext context)
 	{

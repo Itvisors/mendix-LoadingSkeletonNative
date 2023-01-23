@@ -1,6 +1,6 @@
 import { createElement, useState } from "react";
 
-import { TextStyle, View, Animated, ViewStyle, StyleSheet } from "react-native";
+import {  View, Animated, StyleSheet } from "react-native";
 
 
 export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skeletonShapes, delay }) {
@@ -40,14 +40,14 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
         let key = 0;
         return skeletonShapes.map(shape => {
             key++;
-            let styleListShape = [styles.skeletonShape]; /*shape.shapeClass +*/
-            if (shape.skeletonShape === "rectangle") {
+            let styleListShape = styles.skeletonShape; /*shape.shapeClass +*/
+            /*if (shape.skeletonShape === "rectangle") {
                 styleListShape.append(styles.skeletonRectangle);
             } else {
                 styleListShape.append(styles.skeletonCircle);
-            }
-            const width = shape.shapeWidth + (shape.shapeWidthPixels ? "px" : "%");
-            const height = shape.shapeHeight + (shape.shapeHeightPixels ? "px" : "%");
+            }*/
+            const width = shape.shapeWidth //+ (shape.shapeWidthPixels ? "px" : "%");
+            const height = shape.shapeHeight //+ (shape.shapeHeightPixels ? "px" : "%");
             return <View key={key} style={[styleListShape, { width: width, height: height }]}></View>;
         });
     }
@@ -57,7 +57,7 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
     let contentToShow;
     if (isInitialized) {
         // If date is not yet loaded, set class such that it is not shown
-        const styleListView = isDataLoaded ? [] : [styles.skeletonContentNotVisible];
+        const styleListView = isDataLoaded ? undefined : styles.skeletonContentNotVisible;
         contentToShow = <View style={styleListView}>{contentToLoad}</View>;
     } else {
         if (dataLoaded.status === "available") {
@@ -67,11 +67,11 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
             }, delay);
         }
     }
-
     return (
-        <View>
+        <View style={style}>
             {contentToShow}
-            {dataLoaded ? undefined : renderShapes()}
+            {isDataLoaded ? undefined : renderShapes()}
+            <View style={[{ width: 50, height: 50, backgroundColor:'red' }]}></View>
         </View>
     );
 }
