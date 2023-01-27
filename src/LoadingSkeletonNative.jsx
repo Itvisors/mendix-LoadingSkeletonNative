@@ -41,7 +41,9 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
             }*/
             const width = shape.shapeWidth //+ (shape.shapeWidthPixels ? "px" : "%");
             const height = shape.shapeHeight //+ (shape.shapeHeightPixels ? "px" : "%");
-            return (<BlinkingView key={key} duration={850}><View style={[styleListShape, { width: width, height: height }]}></View></BlinkingView>);
+            return (<BlinkingView key={key} duration={850} minOpacity={0.35}>
+                <View style={[styleListShape, { width: width, height: height }]}></View>
+                </BlinkingView>);
             });
     }
 

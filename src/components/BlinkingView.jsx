@@ -3,19 +3,19 @@ import { createElement, useRef } from "react";
 import {  View, Animated, Easing } from "react-native";
 
 
-export function BlinkingView({ duration, children }) {
-    const blinkAnimation = useRef(new Animated.Value(0.35)).current;
+export function BlinkingView({ duration, minOpacity = 0, maxOpacity = 1, children }) {
+    const blinkAnimation = useRef(new Animated.Value(minOpacity)).current;
 
     Animated.loop(
         Animated.sequence([
             Animated.timing(blinkAnimation, {
-                toValue: 0.35,
+                toValue: minOpacity,
                 duration: duration,
                 useNativeDriver: true,
                 easing: Easing.inOut(Easing.ease),
             }),
             Animated.timing(blinkAnimation, {
-                toValue: 1,
+                toValue: maxOpacity,
                 duration: duration,
                 useNativeDriver: true,
                 easing: Easing.inOut(Easing.ease),
