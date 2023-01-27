@@ -1,6 +1,8 @@
 import { createElement, useState } from "react";
 
-import {  View, Animated, StyleSheet } from "react-native";
+import {  View, StyleSheet } from "react-native";
+
+import { BlinkingView } from "./components/BlinkingView";
 
 
 export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skeletonShapes, delay }) {
@@ -9,10 +11,6 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
         display: "flex",
         marginBottom: 16,
         backgroundColor: "#DDD",
-        /*animationName: "skeletonBlink",
-        animationDuration: "1.7s",
-        animationTimingFunction: "ease-in-out",
-        animationIterationCount: "infinite",*/
         },
         skeletonContentNotVisible : {
             display: "none",
@@ -23,11 +21,6 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
         skeletonCircle : {
             /*borderRadius: "50%", width*0,5*/
         },
-        /*@keyframes skeletonBlink {
-            0% {opacity: 1;}
-            50% {opacity: 0.35;}
-            100% {opacity: 1;}
-          }*/
     });
     const [isInitialized, setisInitialized] = useState(false);
     
@@ -48,8 +41,8 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
             }*/
             const width = shape.shapeWidth //+ (shape.shapeWidthPixels ? "px" : "%");
             const height = shape.shapeHeight //+ (shape.shapeHeightPixels ? "px" : "%");
-            return <View key={key} style={[styleListShape, { width: width, height: height }]}></View>;
-        });
+            return (<BlinkingView key={key} duration={850}><View style={[styleListShape, { width: width, height: height }]}></View></BlinkingView>);
+            });
     }
 
     const isDataLoaded = dataLoaded && dataLoaded.value;
