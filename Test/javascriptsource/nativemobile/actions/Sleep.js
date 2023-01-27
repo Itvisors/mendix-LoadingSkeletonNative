@@ -17,7 +17,7 @@ import { Big } from "big.js";
  */
 export async function Sleep(timeInMs) {
 	// BEGIN USER CODE
-	const sleep = ms => new Promise(resolve => setTimeout(resolve, 10000));
+	const sleep = ms => new Promise(resolve => setTimeout(resolve, Number(ms)));
     await sleep(timeInMs);
 	// END USER CODE
 }
