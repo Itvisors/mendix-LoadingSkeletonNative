@@ -649,6 +649,12 @@ export const radioButtons = {
 export const backgroundGradient = {
     container: {}
 };
+
+export const customClass = {
+    container: {
+        backgroundColor:"red",
+    }
+}
 // column chart styles
 export const columnChart = {
     container: {},

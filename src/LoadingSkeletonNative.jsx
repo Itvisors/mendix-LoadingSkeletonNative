@@ -1,27 +1,13 @@
 import { createElement, useState } from "react";
 
-import {  View, StyleSheet } from "react-native";
+import {  View } from "react-native";
 
 import { BlinkingView } from "./components/BlinkingView";
 
+import { skeletonStyles } from './ui/styles';
+
 
 export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skeletonShapes, delay }) {
-    const styles = StyleSheet.create({
-        skeletonShape : {
-        display: "flex",
-        marginBottom: 16,
-        backgroundColor: "#DDD",
-        },
-        skeletonContentNotVisible : {
-            display: "none",
-        },
-        skeletonRectangle : {
-            borderRadius: 4,
-        },
-        skeletonCircle : {
-            /*borderRadius: "50%", width*0,5*/
-        },
-    });
     const [isInitialized, setisInitialized] = useState(false);
     
     /**
@@ -32,17 +18,20 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
     const renderShapes = () => {
         let key = 0;
         return skeletonShapes.map(shape => {
+            const width = shape.shapeWidth //+ (shape.shapeWidthPixels ? "" : "%");
+            const height = shape.shapeHeight //+ (shape.shapeHeightPixels ? "" : "%");
             key++;
-            let styleListShape = styles.skeletonShape; /*shape.shapeClass +*/
-            /*if (shape.skeletonShape === "rectangle") {
-                styleListShape.append(styles.skeletonRectangle);
+            const styleArray = [...style];
+            styleArray.unshift(skeletonStyles.skeletonShape);
+            styleArray.unshift(skeletonStyles.shapeClass);
+            //let styleListShape = styles.skeletonShape; /*shape.shapeClass +*/
+            if (shape.skeletonShape === "rectangle") {
+                styleArray.unshift(skeletonStyles.skeletonRectangle);
             } else {
-                styleListShape.append(styles.skeletonCircle);
-            }*/
-            const width = shape.shapeWidth //+ (shape.shapeWidthPixels ? "px" : "%");
-            const height = shape.shapeHeight //+ (shape.shapeHeightPixels ? "px" : "%");
+                styleArray.unshift({borderRadius: width * 0.5});
+            }
             return (<BlinkingView key={key} duration={850} minOpacity={0.35}>
-                <View style={[styleListShape, { width: width, height: height }]}></View>
+                <View style={[styleArray, { width: width, height: height }]}></View>
                 </BlinkingView>);
             });
     }
@@ -52,7 +41,7 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
     let contentToShow;
     if (isInitialized) {
         // If date is not yet loaded, set class such that it is not shown
-        const styleListView = isDataLoaded ? undefined : styles.skeletonContentNotVisible;
+        const styleListView = isDataLoaded ? undefined : skeletonStyles.skeletonContentNotVisible;
         contentToShow = <View style={styleListView}>{contentToLoad}</View>;
     } else {
         if (dataLoaded.status === "available") {
@@ -63,10 +52,9 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
         }
     }
     return (
-        <View style={style}>
+        <View style={[style]}>
             {contentToShow}
             {isDataLoaded ? undefined : renderShapes()}
-            <View style={[{ width: 50, height: 50, backgroundColor:'red' }]}></View>
         </View>
     );
 }
