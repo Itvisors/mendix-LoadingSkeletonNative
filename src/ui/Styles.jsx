@@ -2,18 +2,18 @@ import { Style } from "@mendix/pluggable-widgets-tools";
 import { StyleSheet } from "react-native";
 
 export const skeletonStyles = StyleSheet.create({
-    skeletonShape : {
-    display: "flex",
-    marginBottom: 16,
-    backgroundColor: "#DDD",
+    skeletonShape: {
+        display: "flex",
+        marginBottom: 16,
+        backgroundColor: "#DDD",
     },
-    skeletonContentNotVisible : {
+    skeletonContentNotVisible: {
         display: "none",
     },
-    skeletonRectangle : {
+    skeletonRectangle: {
         borderRadius: 4,
     },
-    skeletonCircle : {
+    skeletonCircle: {
         borderRadius: 50, /*width*0,5*/
     },
 });

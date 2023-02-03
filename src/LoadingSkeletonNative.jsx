@@ -18,13 +18,12 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
     const renderShapes = () => {
         let key = 0;
         return skeletonShapes.map(shape => {
-            const width = shape.shapeWidth //+ (shape.shapeWidthPixels ? "" : "%");
-            const height = shape.shapeHeight //+ (shape.shapeHeightPixels ? "" : "%");
+            const width = Number(shape.shapeWidth.value);
+            const height = Number(shape.shapeHeight.value);
             key++;
             const styleArray = [...style];
             styleArray.unshift(skeletonStyles.skeletonShape);
             styleArray.unshift(skeletonStyles.shapeClass);
-            //let styleListShape = styles.skeletonShape; /*shape.shapeClass +*/
             if (shape.skeletonShape === "rectangle") {
                 styleArray.unshift(skeletonStyles.skeletonRectangle);
             } else {
