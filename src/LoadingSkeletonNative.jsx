@@ -7,9 +7,21 @@ import { BlinkingView } from "./components/BlinkingView";
 import { skeletonStyles } from './ui/styles';
 
 
-export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skeletonShapes, delay }) {
+export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, contentDuringLoad, useSkeletonShapes, skeletonShapes, delay }) {
     const [isInitialized, setisInitialized] = useState(false);
     
+
+    /**
+     * Render the content to shown when loading data
+     */
+    const renderLoadingContent = () => {
+        if (useSkeletonShapes) {
+            return renderShapes();
+        } else {
+            return <View>{contentDuringLoad}</View>
+        }
+    }
+
     /**
      * Render the shapes and set the correct properties
      *
@@ -53,7 +65,7 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, skelet
     return (
         <View style={[style]}>
             {contentToShow}
-            {isDataLoaded ? undefined : renderShapes()}
+            {isDataLoaded ? undefined : renderLoadingContent()}
         </View>
     );
 }

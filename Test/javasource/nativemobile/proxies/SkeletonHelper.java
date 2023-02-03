@@ -20,7 +20,8 @@ public class SkeletonHelper
 	 */
 	public enum MemberNames
 	{
-		IsLoaded("IsLoaded");
+		IsLoaded("IsLoaded"),
+		IsLoaded2("IsLoaded2");
 
 		private final java.lang.String metaName;
 
@@ -148,6 +149,42 @@ public class SkeletonHelper
 	public final void setIsLoaded(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean isloaded)
 	{
 		getMendixObject().setValue(context, MemberNames.IsLoaded.toString(), isloaded);
+	}
+
+	/**
+	 * @return value of IsLoaded2
+	 */
+	public final java.lang.Boolean getIsLoaded2()
+	{
+		return getIsLoaded2(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of IsLoaded2
+	 */
+	public final java.lang.Boolean getIsLoaded2(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.IsLoaded2.toString());
+	}
+
+	/**
+	 * Set value of IsLoaded2
+	 * @param isloaded2
+	 */
+	public final void setIsLoaded2(java.lang.Boolean isloaded2)
+	{
+		setIsLoaded2(getContext(), isloaded2);
+	}
+
+	/**
+	 * Set value of IsLoaded2
+	 * @param context
+	 * @param isloaded2
+	 */
+	public final void setIsLoaded2(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean isloaded2)
+	{
+		getMendixObject().setValue(context, MemberNames.IsLoaded2.toString(), isloaded2);
 	}
 
 	/**
