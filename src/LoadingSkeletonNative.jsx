@@ -1,6 +1,6 @@
 import { createElement, useState } from "react";
 
-import {  View } from "react-native";
+import { View } from "react-native";
 
 import { BlinkingView } from "./components/BlinkingView";
 
@@ -9,7 +9,7 @@ import { skeletonStyles } from './ui/styles';
 
 export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, contentDuringLoad, useSkeletonShapes, skeletonShapes, delay }) {
     const [isInitialized, setisInitialized] = useState(false);
-    
+
 
     /**
      * Render the content to shown when loading data
@@ -39,12 +39,12 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, conten
             if (shape.skeletonShape === "rectangle") {
                 styleArray.unshift(skeletonStyles.skeletonRectangle);
             } else {
-                styleArray.unshift({borderRadius: width * 0.5});
+                styleArray.unshift({ borderRadius: width * 0.5 });
             }
             return (<BlinkingView key={key} duration={850} minOpacity={0.35}>
                 <View style={[styleArray, { width: width, height: height }]}></View>
-                </BlinkingView>);
-            });
+            </BlinkingView>);
+        });
     }
 
     const isDataLoaded = dataLoaded && dataLoaded.value;
@@ -58,7 +58,7 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, conten
         if (dataLoaded.status === "available") {
             // Set timeOut to make sure date the skeleton is rendered before showing the content.
             setTimeout(() => {
-                setisInitialized( true );
+                setisInitialized(true);
             }, delay);
         }
     }
