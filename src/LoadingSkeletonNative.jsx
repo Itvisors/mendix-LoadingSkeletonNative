@@ -2,14 +2,18 @@ import { createElement, useState } from "react";
 
 import { View } from "react-native";
 
+import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
+
 import { BlinkingView } from "./components/BlinkingView";
 
 import { skeletonStyles } from './ui/styles';
 
 
+
 export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, contentDuringLoad, useSkeletonShapes, skeletonShapes, delay }) {
     const [isInitialized, setisInitialized] = useState(false);
 
+    const styles = mergeNativeStyles(skeletonStyles, style);
 
     /**
      * Render the content to shown when loading data
@@ -29,15 +33,13 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, conten
      */
     const renderShapes = () => {
         let key = 0;
-        return skeletonShapes.map(shape => {
+        const skeletonContent = skeletonShapes.map(shape => {
             const width = Number(shape.shapeWidth.value);
             const height = Number(shape.shapeHeight.value);
             key++;
-            const styleArray = [...style];
-            styleArray.unshift(skeletonStyles.skeletonShape);
-            styleArray.unshift(skeletonStyles.shapeClass);
+            const styleArray = [styles.skeletonShape];
             if (shape.skeletonShape === "rectangle") {
-                styleArray.unshift(skeletonStyles.skeletonRectangle);
+                styleArray.unshift(styles.skeletonRectangle);
             } else {
                 styleArray.unshift({ borderRadius: width * 0.5 });
             }
@@ -45,6 +47,7 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, conten
                 <View style={[styleArray, { width: width, height: height }]}></View>
             </BlinkingView>);
         });
+        return <View style={[styles.skeletonContainer]}>{skeletonContent}</View>
     }
 
     const isDataLoaded = dataLoaded && dataLoaded.value;
@@ -52,7 +55,7 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, conten
     let contentToShow;
     if (isInitialized) {
         // If date is not yet loaded, set class such that it is not shown
-        const styleListView = isDataLoaded ? undefined : skeletonStyles.skeletonContentNotVisible;
+        const styleListView = isDataLoaded ? undefined : styles.skeletonContentNotVisible;
         contentToShow = <View style={styleListView}>{contentToLoad}</View>;
     } else {
         if (dataLoaded.status === "available") {
@@ -62,8 +65,9 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, conten
             }, delay);
         }
     }
+
     return (
-        <View style={[style]}>
+        <View style={[styles.container]}>
             {contentToShow}
             {isDataLoaded ? undefined : renderLoadingContent()}
         </View>

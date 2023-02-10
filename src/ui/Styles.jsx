@@ -1,7 +1,8 @@
-import { Style } from "@mendix/pluggable-widgets-tools";
-import { StyleSheet } from "react-native";
-
-export const skeletonStyles = StyleSheet.create({
+export const skeletonStyles = {
+    container: {
+    },
+    skeletonContainer: {
+    },
     skeletonShape: {
         display: "flex",
         marginBottom: 16,
@@ -14,6 +15,6 @@ export const skeletonStyles = StyleSheet.create({
         borderRadius: 4,
     },
     skeletonCircle: {
-        borderRadius: 50, /*width*0,5*/
+        borderRadius: 50,
     },
-});
+};
