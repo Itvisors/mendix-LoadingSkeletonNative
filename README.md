@@ -9,7 +9,7 @@ Show a skeleton while a part of the page is loading, such that this won't result
 - Show one or many skeletons.
 
 ## Usage
-Place the widget on the page and place the content (including the data flow) inside the widget. The widget needs to know when content is rendered. For this e.g. a boolean can be used, which is set to true at the end of the flow. You can configure which shapes to show while data is being loaded. However, sometimes it might be easier to use multiple skeleton widgets to render the skeleton needed, e.g. if you want some more control over the styling of the different shapes. By giving the different widgets the same expression, the data is shown simultaneously. 
+Place the widget on the page and place the content to show after loading inside the widget. The widget needs to know when content is rendered. For this e.g. a boolean can be used, which is set to true at the end of the datasource flow. You can configure which shapes to show while data is being loaded. However, sometimes it might be easier to use multiple skeleton widgets to render the skeleton needed, e.g. if you want some more control over the styling of the different shapes. By giving the different widgets the same expression, the data is shown simultaneously. 
 
 Another option is to use custom content. Once you set the "Use Shapes" property to false, a second widget container will become available where you can configure the content you want to show during loading the content within the first container.
 
