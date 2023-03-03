@@ -22,7 +22,10 @@ If you want to load multiple datasources on your page, you have two options:
 - Show part of page when ready.
 If you want to show one part of the page when that part is ready and still show a skeleton for the other part, you can insert a skeleton widget for every part of the page that loads their own part with their own boolean to indicate when data is loaded.
 - Wait till everything is ready.
-If you want to wait with showing something till everything is ready, you can use one or multiple skeletons. However you must make sure that you only show the data when everything is loaded. This can e.g. be done by adding a boolean per datasource and add all booleans to the expression. 
+If you want to wait with showing something till everything is ready, you can use one or multiple skeletons. However you must make sure that you only show the data when everything is loaded. This can e.g. be done by adding a boolean per datasource and add all booleans to the expression.
+
+### Styling
+Every shap gets default styling (skeletonShape), which give a margin bottom and the background color. In addition, rectangles have the skeletonRectangle styling, which gives a small border radius of 4. The circle (skeletonCircle) have a border radius of 50% of the width.
 
 ## Limitations
 - Only react widgets can be rendered within the skeleton.
