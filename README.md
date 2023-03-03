@@ -1,7 +1,8 @@
 ## LoadingSkeletonNative
 Show a skeleton while a part of the page is loading, such that this won't result in waiting for the page to open. This is a Native variant of https://marketplace.mendix.com/link/component/119807:
 
-![skeleton](https://user-images.githubusercontent.com/10990959/155714524-708020f3-d4a4-4d2b-aeb8-e0b30510cde0.gif)
+![skeletonNative](https://user-images.githubusercontent.com/10990959/222715925-948cbc1a-8d89-425a-a45e-bbc4867ab831.gif)
+
 
 ## Features
 - Show a 'loading skeleton' while data is being loaded (e.g. when you use a big datasource or data is retrieved from an api).
