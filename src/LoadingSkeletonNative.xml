@@ -32,7 +32,7 @@
                     <propertyGroup caption="Shapes">
                         <property key="skeletonShape" type="enumeration" required="true" defaultValue="rectangle">
                             <caption>Shape</caption>
-                            <description>Whether to apply rectangle(skeletonRectangle) or circle(skeletonCircle) styling.</description>
+                            <description>Whether to apply rectangle(skeletonRectangle) or circle(skeletonCircle) styling, next to default(skeletonShape) styling.</description>
                             <enumerationValues>
                                 <enumerationValue key="rectangle">Rectangle</enumerationValue>
                                 <enumerationValue key="circle">Circle</enumerationValue>

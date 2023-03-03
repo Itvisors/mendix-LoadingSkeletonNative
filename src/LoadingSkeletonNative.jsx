@@ -42,6 +42,8 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, conten
                 styleArray.unshift(styles.skeletonRectangle);
             } else {
                 styleArray.unshift({ borderRadius: width * 0.5 });
+                styleArray.unshift(styles.skeletonCircle);
+
             }
             return (<BlinkingView key={key} duration={850} minOpacity={0.35}>
                 <View style={[styleArray, { width: width, height: height }]}></View>

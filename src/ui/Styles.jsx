@@ -15,6 +15,5 @@ export const skeletonStyles = {
         borderRadius: 4,
     },
     skeletonCircle: {
-        borderRadius: 50,
     },
 };

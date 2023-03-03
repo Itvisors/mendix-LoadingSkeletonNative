@@ -1,6 +1,6 @@
 import { createElement, useRef } from "react";
 
-import {  View, Animated, Easing } from "react-native";
+import { Animated, Easing } from "react-native";
 
 
 export function BlinkingView({ duration, minOpacity = 0, maxOpacity = 1, children }) {
@@ -23,9 +23,9 @@ export function BlinkingView({ duration, minOpacity = 0, maxOpacity = 1, childre
         ])
     ).start();
     return (
-        <Animated.View style={{opacity: blinkAnimation}}>
+        <Animated.View style={{ opacity: blinkAnimation }}>
             {children}
         </Animated.View>
-        
+
     );
 }
