@@ -23,7 +23,7 @@
             </property>
             <property key="useSkeletonShapes" type="boolean" required="true" defaultValue="false">
                 <caption>Use Shapes</caption>
-                <description>If set to true, you can define shapes what to show when data is loading. If this does not suffice, you can create your own 'skeleton' in the second widget container.</description>
+                <description>If set to true, you can define shapes to show when data is loading. If this does not suffice, you can create your own 'skeleton' in the second widget container.</description>
             </property>
             <property key="skeletonShapes" type="object" isList="true" required="false">
                 <caption>Shapes</caption>
