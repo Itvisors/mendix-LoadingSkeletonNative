@@ -25,7 +25,7 @@ If you want to show one part of the page when that part is ready and still show 
 If you want to wait with showing something till everything is ready, you can use one or multiple skeletons. However you must make sure that you only show the data when everything is loaded. This can e.g. be done by adding a boolean per datasource and add all booleans to the expression.
 
 ### Styling
-Every shap gets default styling (skeletonShape), which give a margin bottom and the background color. In addition, rectangles have the skeletonRectangle styling, which gives a small border radius of 4. The circle (skeletonCircle) have a border radius of 50% of the width.
+Every shape gets default styling (skeletonShape), which gives a margin bottom and the background color. In addition, rectangles have the skeletonRectangle styling, which gives a small border radius of 4. The circle (skeletonCircle) have a border radius of 50% of the width. All shapes together are grouped by a view, with styling skeletonContainer. These styles can be overwritten if needed, but you can also show multiple skeletons with the same boolean as source or show custom content.
 
 ## Limitations
 - Only react widgets can be rendered within the skeleton.
