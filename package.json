@@ -1,7 +1,7 @@
 {
   "name": "loadingskeletonnative",
   "widgetName": "LoadingSkeletonNative",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Show a skeleton while a part of the page is loading, such that this won't result in waiting for the page to open",
   "copyright": "Aiden (2023)",
   "author": "Johan Munneke",
@@ -22,9 +22,17 @@
     "release": "pluggable-widgets-tools release:native"
   },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^9.18.0"
+    "@mendix/pluggable-widgets-tools": "^10.7.1"
   },
   "dependencies": {
 
+  },
+  "resolutions": {
+    "react": "^18.2.0",
+    "react-native": "0.72.7"
+  },
+  "overrides": {
+    "react": "^18.2.0",
+    "react-native": "0.72.7"
   }
 }
