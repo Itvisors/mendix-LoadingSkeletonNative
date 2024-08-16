@@ -18,6 +18,12 @@ export function BlinkingView({ duration, minOpacity = 0, maxOpacity = 1, childre
                 duration: duration,
                 useNativeDriver: true,
                 easing: Easing.inOut(Easing.ease)
+            }),
+            Animated.timing(blinkAnimation, {
+                toValue: minOpacity,
+                duration: duration,
+                useNativeDriver: true,
+                easing: Easing.inOut(Easing.ease)
             })
         ])
     ).start();
