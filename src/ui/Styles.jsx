@@ -1,19 +1,16 @@
 export const skeletonStyles = {
-    container: {
-    },
-    skeletonContainer: {
-    },
+    container: {},
+    skeletonContainer: {},
     skeletonShape: {
         display: "flex",
         marginBottom: 16,
-        backgroundColor: "#DDD",
+        backgroundColor: "#DDD"
     },
     skeletonContentNotVisible: {
-        display: "none",
+        display: "none"
     },
     skeletonRectangle: {
-        borderRadius: 4,
+        borderRadius: 4
     },
-    skeletonCircle: {
-    },
+    skeletonCircle: {}
 };

@@ -1,30 +1,25 @@
+import { BlinkingView } from "./components/BlinkingView";
+
 import { createElement, useState } from "react";
 
 import { View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
-import { BlinkingView } from "./components/BlinkingView";
+import { skeletonStyles } from "./ui/styles";
 
-import { skeletonStyles } from './ui/styles';
-
-
-
-export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, contentDuringLoad, useSkeletonShapes, skeletonShapes, delay }) {
+export function LoadingSkeletonNative({
+    style,
+    dataLoaded,
+    contentToLoad,
+    contentDuringLoad,
+    useSkeletonShapes,
+    skeletonShapes,
+    delay
+}) {
     const [isInitialized, setisInitialized] = useState(false);
 
     const styles = mergeNativeStyles(skeletonStyles, style);
-
-    /**
-     * Render the content to shown when loading data
-     */
-    const renderLoadingContent = () => {
-        if (useSkeletonShapes) {
-            return renderShapes();
-        } else {
-            return <View>{contentDuringLoad}</View>
-        }
-    }
 
     /**
      * Render the shapes and set the correct properties
@@ -43,14 +38,26 @@ export function LoadingSkeletonNative({ style, dataLoaded, contentToLoad, conten
             } else {
                 styleArray.unshift({ borderRadius: width * 0.5 });
                 styleArray.unshift(styles.skeletonCircle);
-
             }
-            return (<BlinkingView key={key} duration={850} minOpacity={0.35}>
-                <View style={[styleArray, { width: width, height: height }]}></View>
-            </BlinkingView>);
+            return (
+                <BlinkingView key={key} duration={850} minOpacity={0.35}>
+                    <View style={[styleArray, { width: width, height: height }]}></View>
+                </BlinkingView>
+            );
         });
-        return <View style={[styles.skeletonContainer]}>{skeletonContent}</View>
-    }
+        return <View style={[styles.skeletonContainer]}>{skeletonContent}</View>;
+    };
+
+    /**
+     * Render the content to shown when loading data
+     */
+    const renderLoadingContent = () => {
+        if (useSkeletonShapes) {
+            return renderShapes();
+        } else {
+            return <View>{contentDuringLoad}</View>;
+        }
+    };
 
     const isDataLoaded = dataLoaded && dataLoaded.value;
     // Once the widget is mounted, show the content, such that flows are triggered
